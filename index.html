@@ -327,19 +327,6 @@
 <!-- ============ LIBRARIES ============ -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-<script>
-function loadChartJSFromCDN() {
-  const primary = document.createElement('script');
-  primary.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
-  primary.onerror = function() {
-    // Fallback to second CDN
-    const backup = document.createElement('script');
-    backup.src = 'https://unpkg.com/chart.js@4.4.0/dist/chart.umd.min.js';
-    document.head.appendChild(backup);
-  };
-  document.head.appendChild(primary);
-}
-</script>
 <!-- ============ APP SCRIPTS ============ -->
 <script src="js/storage.js"></script>
 <script src="js/observation.js"></script>
