@@ -1,1 +1,8 @@
-
+TTS-backup-*.json
+*.backup.json
+/data/
+/backups/
+.DS_Store
+Thumbs.db
+desktop.ini
+teacher-records-*.csv
