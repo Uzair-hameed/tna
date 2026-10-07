@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<!-- ============ TOP HEADER ============ -->
 <header class="app-header">
   <div class="header-left">
     <h1>📋 Teacher Observation & TNA System</h1>
@@ -19,12 +20,12 @@
   </div>
 </header>
 
+<!-- ============ TAB NAVIGATION ============ -->
 <nav class="tabs">
   <button class="tab-btn active" data-tab="dashboard">📊 Dashboard</button>
   <button class="tab-btn" data-tab="observation">👁️ Observation</button>
   <button class="tab-btn" data-tab="test">📝 Teacher Test</button>
   <button class="tab-btn" data-tab="tna">📋 TNA Self-Assessment</button>
-  <button class="tab-btn" data-tab="attachments">📎 Self-Reflections</button>
   <button class="tab-btn" data-tab="records">📁 Records</button>
   <button class="tab-btn" data-tab="reports">📄 Reports</button>
   <button class="tab-btn" data-tab="settings">⚙️ Settings</button>
@@ -32,32 +33,58 @@
 
 <main class="container">
 
-  <!-- DASHBOARD -->
+  <!-- ============ TAB: DASHBOARD ============ -->
   <section id="tab-dashboard" class="tab-content active">
     <h2>Group Dashboard</h2>
     <p class="hint">Overview of all teachers and training priorities.</p>
 
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">Total Teachers</div><div class="kpi-value" id="kpi-total">0</div></div>
-      <div class="kpi-card"><div class="kpi-label">Avg Self-Rating</div><div class="kpi-value" id="kpi-self">0.00</div></div>
-      <div class="kpi-card"><div class="kpi-label">Avg Test Score</div><div class="kpi-value" id="kpi-test">0.0 / 40</div></div>
-      <div class="kpi-card"><div class="kpi-label">Avg Observation</div><div class="kpi-value" id="kpi-obs">0%</div></div>
+      <div class="kpi-card">
+        <div class="kpi-label">Total Teachers</div>
+        <div class="kpi-value" id="kpi-total">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Self-Rating</div>
+        <div class="kpi-value" id="kpi-self">0.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Test Score</div>
+        <div class="kpi-value" id="kpi-test">0.0 / 40</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Observation</div>
+        <div class="kpi-value" id="kpi-obs">0%</div>
+      </div>
     </div>
 
     <div class="priority-box">
-      <h3>🎯 Top 5 Priority Training Areas</h3>
-      <ol id="priority-list"><li>No data yet — add teacher records first.</li></ol>
+      <h3>🎯 Top 3 Priority Training Areas</h3>
+      <ol id="priority-list">
+        <li>No data yet — add teacher records first.</li>
+      </ol>
     </div>
 
     <div class="charts-grid">
-      <div class="chart-card"><h3>Domain Gaps (Training Needs)</h3><canvas id="chart-gaps"></canvas></div>
-      <div class="chart-card"><h3>Three-Source Comparison</h3><canvas id="chart-radar"></canvas></div>
-      <div class="chart-card"><h3>Priority Distribution</h3><canvas id="chart-pie"></canvas></div>
-      <div class="chart-card"><h3>Per-Teacher Observation %</h3><canvas id="chart-teachers"></canvas></div>
+      <div class="chart-card">
+        <h3>Domain Gaps (Training Needs)</h3>
+        <canvas id="chart-gaps"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Three-Source Comparison</h3>
+        <canvas id="chart-radar"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Priority Distribution</h3>
+        <canvas id="chart-pie"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Per-Teacher Observation %</h3>
+        <canvas id="chart-teachers"></canvas>
+      </div>
     </div>
   </section>
 
-  <!-- OBSERVATION -->
+  <!-- ============ TAB: OBSERVATION ============ -->
   <section id="tab-observation" class="tab-content">
     <h2>Classroom Observation Rubric</h2>
     <p class="hint">Rate each indicator 1–4 or mark NA. Scores calculate automatically.</p>
@@ -78,7 +105,9 @@
       </div>
     </div>
 
-    <div id="observation-domains" class="domain-container"></div>
+    <div id="observation-domains" class="domain-container">
+      <!-- Domains injected by JavaScript -->
+    </div>
 
     <div class="sticky-summary">
       <div class="summary-box">
@@ -93,7 +122,7 @@
     </div>
   </section>
 
-  <!-- TEACHER TEST -->
+  <!-- ============ TAB: TEACHER TEST ============ -->
   <section id="tab-test" class="tab-content">
     <h2>Teacher Subject Knowledge & Pedagogy Test</h2>
     <p class="hint">Enter marks obtained. Total is out of 40.</p>
@@ -102,7 +131,10 @@
       <div class="form-row">
         <label>Teacher Name <input type="text" id="test-teacher" placeholder="Full name"></label>
         <label>Grade Band
-          <select id="test-band"><option value="1-5">Grades 1–5</option><option value="6-8">Grades 6–8</option></select>
+          <select id="test-band">
+            <option value="1-5">Grades 1–5</option>
+            <option value="6-8">Grades 6–8</option>
+          </select>
         </label>
         <label>Date <input type="date" id="test-date"></label>
       </div>
@@ -119,6 +151,7 @@
         </div>
         <div class="test-subtotal">Part A Total: <span id="test-partA">0</span> / 20</div>
       </div>
+
       <div class="test-card">
         <h3>Part B: Pedagogical Knowledge (20 marks)</h3>
         <div class="sub-score-grid">
@@ -142,40 +175,50 @@
     </div>
   </section>
 
-  <!-- TNA SELF-ASSESSMENT -->
+  <!-- ============ TAB: TNA SELF-ASSESSMENT ============ -->
   <section id="tab-tna" class="tab-content">
     <h2>TNA Self-Assessment Summary</h2>
-    <p class="hint">Paste the teacher's row from the Google Form responses sheet — averages auto-fill. Or type manually.</p>
-
-    <div class="paste-box">
-      <h3>⚡ Quick Auto-Fill from Google Sheet</h3>
-      <p class="paste-hint">Open your Google Form responses sheet → select one teacher's entire row → copy (Ctrl+C) → paste below.</p>
-      <textarea id="tna-paste" rows="4" placeholder="Paste the row here (Ctrl+V)..."></textarea>
-      <div class="paste-actions">
-        <button id="btn-autofill-tna" class="btn btn-primary">🔍 Auto-Fill From Paste</button>
-        <button id="btn-clear-paste" class="btn btn-secondary">Clear</button>
-        <span id="paste-status" class="paste-status"></span>
-      </div>
-    </div>
+    <p class="hint">Enter the average of each section from the Google Form (scale 1–5).</p>
 
     <div class="form-header">
       <div class="form-row">
         <label>Teacher Name <input type="text" id="tna-teacher" placeholder="Full name"></label>
         <label>Employee ID <input type="text" id="tna-empid" placeholder="ID"></label>
         <label>Grade Band
-          <select id="tna-band"><option value="1-5">Grades 1–5</option><option value="6-8">Grades 6–8</option></select>
+          <select id="tna-band">
+            <option value="1-5">Grades 1–5</option>
+            <option value="6-8">Grades 6–8</option>
+          </select>
         </label>
         <label>Date <input type="date" id="tna-date"></label>
       </div>
     </div>
 
     <div class="tna-sections">
-      <div class="tna-card"><h3>Section A: Subject Knowledge</h3><label>Average (1–5) <input type="number" id="tna-a" step="0.01" min="1" max="5"></label></div>
-      <div class="tna-card"><h3>Section B: Pedagogical Skills</h3><label>Average (1–5) <input type="number" id="tna-b" step="0.01" min="1" max="5"></label></div>
-      <div class="tna-card"><h3>Section C: Assessment Skills</h3><label>Average (1–5) <input type="number" id="tna-c" step="0.01" min="1" max="5"></label></div>
-      <div class="tna-card"><h3>Section D: Classroom Management</h3><label>Average (1–5) <input type="number" id="tna-d" step="0.01" min="1" max="5"></label></div>
-      <div class="tna-card"><h3>Section E: Materials & Resources</h3><label>Average (1–5) <input type="number" id="tna-e" step="0.01" min="1" max="5"></label></div>
-      <div class="tna-card"><h3>Section F: Professional Dispositions</h3><label>Average (1–5) <input type="number" id="tna-f" step="0.01" min="1" max="5"></label></div>
+      <div class="tna-card">
+        <h3>Section A: Subject Knowledge</h3>
+        <label>Average (1–5) <input type="number" id="tna-a" step="0.01" min="1" max="5"></label>
+      </div>
+      <div class="tna-card">
+        <h3>Section B: Pedagogical Skills</h3>
+        <label>Average (1–5) <input type="number" id="tna-b" step="0.01" min="1" max="5"></label>
+      </div>
+      <div class="tna-card">
+        <h3>Section C: Assessment Skills</h3>
+        <label>Average (1–5) <input type="number" id="tna-c" step="0.01" min="1" max="5"></label>
+      </div>
+      <div class="tna-card">
+        <h3>Section D: Classroom Management</h3>
+        <label>Average (1–5) <input type="number" id="tna-d" step="0.01" min="1" max="5"></label>
+      </div>
+      <div class="tna-card">
+        <h3>Section E: Materials & Resources</h3>
+        <label>Average (1–5) <input type="number" id="tna-e" step="0.01" min="1" max="5"></label>
+      </div>
+      <div class="tna-card">
+        <h3>Section F: Professional Dispositions</h3>
+        <label>Average (1–5) <input type="number" id="tna-f" step="0.01" min="1" max="5"></label>
+      </div>
     </div>
 
     <div class="sticky-summary">
@@ -190,73 +233,40 @@
     </div>
   </section>
 
-  <!-- SELF-REFLECTIONS (ATTACHMENTS) -->
-  <section id="tab-attachments" class="tab-content">
-    <h2>Teacher Self-Reflections (Part A)</h2>
-    <p class="hint">Upload self-reflection PDFs. Files are matched to teachers by filename.</p>
-
-    <div class="paste-box">
-      <h3>📎 Upload Self-Reflection Files</h3>
-      <p class="paste-hint">
-        <strong>Filename format:</strong> <code>Teacher Name_YYYY-MM-DD.pdf</code><br>
-        <strong>Example:</strong> <code>Ali Khan_2026-10-07.pdf</code><br>
-        Files auto-match to teachers by name. Unmatched files will be listed for manual mapping.
-      </p>
-      <div class="paste-actions">
-        <button id="btn-upload-folder" class="btn btn-primary">📁 Upload Folder</button>
-        <button id="btn-upload-files" class="btn btn-secondary">📄 Upload Files</button>
-        <input type="file" id="file-folder" webkitdirectory directory multiple hidden>
-        <input type="file" id="file-multiple" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
-      </div>
-      <div id="upload-status" class="paste-status" style="margin-top:12px;"></div>
-      <div class="storage-bar-wrap">
-        <div class="storage-label">Storage: <span id="storage-used">0.00</span> MB / ~5 MB</div>
-        <div class="storage-bar"><div id="storage-fill" class="storage-fill"></div></div>
-      </div>
-    </div>
-
-    <div class="table-wrap" style="margin-top:20px;">
-      <table id="attachments-table">
-        <thead>
-          <tr><th>Teacher</th><th>File</th><th>Size</th><th>Uploaded</th><th>Actions</th></tr>
-        </thead>
-        <tbody id="attachments-body">
-          <tr><td colspan="5" class="empty-msg">No self-reflections uploaded yet.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- RECORDS -->
+  <!-- ============ TAB: RECORDS ============ -->
   <section id="tab-records" class="tab-content">
     <h2>Teacher Records</h2>
     <p class="hint">All saved teachers with combined analysis.</p>
 
     <div class="records-toolbar">
       <input type="text" id="records-search" placeholder="🔍 Search teacher name...">
-      <button id="btn-import-tna-csv" class="btn btn-primary">📥 Import Google Form CSV</button>
-      <button id="btn-export-csv" class="btn btn-secondary">📤 Export CSV</button>
-      <button id="btn-import-json" class="btn btn-secondary">🔄 Restore Backup</button>
+      <button id="btn-export-csv" class="btn btn-secondary">📥 Export CSV</button>
+      <button id="btn-import-json" class="btn btn-secondary">📤 Import Backup</button>
       <input type="file" id="file-import" accept=".json" hidden>
-      <input type="file" id="file-tna-csv" accept=".csv" hidden>
     </div>
 
     <div class="table-wrap">
       <table id="records-table">
         <thead>
           <tr>
-            <th>Teacher</th><th>Grade</th><th>TNA Self</th><th>Test /40</th>
-            <th>Obs %</th><th>Rating</th><th>Priority</th><th>Self-Reflection</th><th>Actions</th>
+            <th>Teacher</th>
+            <th>Grade</th>
+            <th>TNA Self</th>
+            <th>Test /40</th>
+            <th>Obs %</th>
+            <th>Rating</th>
+            <th>Priority</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody id="records-body">
-          <tr><td colspan="9" class="empty-msg">No records yet. Add a teacher via the Observation, Test, or TNA tabs.</td></tr>
+          <tr><td colspan="8" class="empty-msg">No records yet. Add a teacher via the Observation, Test, or TNA tabs.</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- REPORTS -->
+  <!-- ============ TAB: REPORTS ============ -->
   <section id="tab-reports" class="tab-content">
     <h2>Reports</h2>
     <p class="hint">Generate and download reports for individual teachers or the whole group.</p>
@@ -269,18 +279,20 @@
         </select>
       </label>
       <label id="report-teacher-label">Teacher
-        <select id="report-teacher"><option value="">-- Select Teacher --</option></select>
+        <select id="report-teacher">
+          <option value="">-- Select Teacher --</option>
+        </select>
       </label>
       <button id="btn-generate-report" class="btn btn-primary">📄 Generate Report</button>
       <button id="btn-download-pdf" class="btn btn-primary">🖨️ Download PDF</button>
-    </div>
+        </div>
 
     <div id="report-preview" class="report-preview">
       <p class="empty-msg">Click "Generate Report" to see preview here.</p>
     </div>
   </section>
 
-  <!-- SETTINGS -->
+  <!-- ============ TAB: SETTINGS ============ -->
   <section id="tab-settings" class="tab-content">
     <h2>Settings</h2>
 
@@ -304,23 +316,70 @@
 
     <div class="settings-card">
       <h3>About</h3>
-      <p>Teacher Observation & TNA System v1.0<br>Local offline tool — no internet required.<br>All data stays on your laptop.</p>
+      <p>Teacher Observation & TNA System v1.0<br>
+      Local offline tool — no internet required.<br>
+      All data stays on your laptop.</p>
     </div>
   </section>
 
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<!-- ============ LIBRARIES ============ -->
+<script src="lib/chart.min.js" onerror="loadChartJSFromCDN()"></script>
 
+<script>
+function loadChartJSFromCDN() {
+  const primary = document.createElement('script');
+  primary.src = 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';
+  primary.onerror = function() {
+    // Fallback to second CDN
+    const backup = document.createElement('script');
+    backup.src = 'https://unpkg.com/chart.js@4.4.0/dist/chart.umd.min.js';
+    document.head.appendChild(backup);
+  };
+  document.head.appendChild(primary);
+}
+</script>
+<!-- ============ APP SCRIPTS ============ -->
 <script src="js/storage.js"></script>
 <script src="js/observation.js"></script>
 <script src="js/test.js"></script>
 <script src="js/tna.js"></script>
-<script src="js/csv-import.js"></script>
+<script src="js/csv-import.js"></script>   <!-- ← Make sure this line exists -->
 <script src="js/attachments.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/report.js"></script>
 <script src="js/app.js"></script>
+<script>
+/* ============ INITIALIZE THE APP ============ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderObservationForm();
+  updateObservationSummary();
 
+  // Observation events
+  ['obs-a1','obs-a2','obs-a3','obs-a4'].forEach(() => {});
+  document.querySelectorAll('#tab-observation input, #tab-observation select')
+    .forEach(el => el.addEventListener('change', () => {/* no-op */}));
+  document.getElementById('btn-save-obs').addEventListener('click', saveObservation);
+  document.getElementById('btn-clear-obs').addEventListener('click', clearObservationForm);
+
+  // Test events
+  ['test-a1','test-a2','test-a3','test-a4','test-b1','test-b2']
+    .forEach(id => document.getElementById(id).addEventListener('input', updateTestSummary));
+  document.getElementById('btn-save-test').addEventListener('click', saveTest);
+  document.getElementById('btn-clear-test').addEventListener('click', clearTestForm);
+
+  // TNA events
+  ['tna-a','tna-b','tna-c','tna-d','tna-e','tna-f']
+    .forEach(id => document.getElementById(id).addEventListener('input', updateTNASummary));
+  document.getElementById('btn-save-tna').addEventListener('click', saveTNA);
+  document.getElementById('btn-clear-tna').addEventListener('click', clearTNAForm);
+
+  // Header backup
+  document.getElementById('btn-backup').addEventListener('click', exportBackup);
+
+  updateBackupStatus();
+});
+</script>
 </body>
 </html>
