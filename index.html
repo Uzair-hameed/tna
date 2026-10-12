@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher Observation & TNA System</title>
+  <title>English Teacher Observation & TNA System</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="app-header">
   <div class="header-left">
-    <h1>📋 Teacher Observation & TNA System</h1>
+    <h1>📋 English Teacher Observation & TNA System</h1>
     <p class="subtitle">English — Grades 1–5 / 6–8</p>
   </div>
   <div class="header-right">
@@ -59,7 +59,7 @@
 
   <!-- OBSERVATION -->
   <section id="tab-observation" class="tab-content">
-    <h2>Classroom Observation Rubric</h2>
+    <h2>Classroom Observation Rubric — English</h2>
     <p class="hint">Rate each indicator 1–4 or mark NA. Scores calculate automatically.</p>
 
     <div class="form-header">
@@ -95,7 +95,7 @@
 
   <!-- TEACHER TEST -->
   <section id="tab-test" class="tab-content">
-    <h2>Teacher Subject Knowledge & Pedagogy Test</h2>
+    <h2>English Teachers' Subject Knowledge & Pedagogy Test</h2>
     <p class="hint">Enter marks obtained. Total is out of 40.</p>
 
     <div class="form-header">
@@ -145,7 +145,7 @@
 
   <!-- TNA -->
   <section id="tab-tna" class="tab-content">
-    <h2>TNA Self-Assessment Summary</h2>
+    <h2>TNA Self-Assessment — English</h2>
     <p class="hint">Enter the average of each section from the Google Form (scale 1–5).</p>
 
     <div class="form-header">
@@ -219,7 +219,7 @@
   <!-- RECORDS -->
   <section id="tab-records" class="tab-content">
     <h2>Teacher Records</h2>
-    <p class="hint">All saved teachers with combined analysis.</p>
+    <p class="hint">All saved English teachers with combined analysis.</p>
 
     <div class="records-toolbar">
       <input type="text" id="records-search" placeholder="🔍 Search teacher name...">
@@ -262,6 +262,7 @@
       </label>
       <button id="btn-generate-report" class="btn btn-primary">📄 Generate Report</button>
       <button id="btn-download-pdf" class="btn btn-primary">🖨️ Download PDF</button>
+      <button id="btn-download-docx" class="btn btn-primary">📥 Download Word (.docx)</button>
     </div>
 
     <div id="report-preview" class="report-preview">
@@ -293,14 +294,18 @@
 
     <div class="settings-card">
       <h3>About</h3>
-      <p>Teacher Observation & TNA System v1.0<br>Local offline tool — no internet required.<br>All data stays on your laptop.</p>
+      <p>English Teacher Observation & TNA System v1.0<br>Local offline tool — no internet required.<br>All data stays on your laptop.</p>
     </div>
   </section>
 
 </main>
 
+<!-- Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
+<!-- App scripts -->
 <script src="js/storage.js"></script>
 <script src="js/observation.js"></script>
 <script src="js/test.js"></script>
