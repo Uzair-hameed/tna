@@ -1,5 +1,6 @@
 /* ============================================================
-   APP.JS — Main controller: tabs, events, initialization
+   APP.JS — English Version
+   Main controller: tabs, events, initialization
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.getElementById('tab-' + tab);
       if (target) target.classList.add('active');
 
-      // Refresh data when entering relevant tabs
       if (tab === 'dashboard') renderDashboard();
       if (tab === 'records') renderRecordsTable();
       if (tab === 'reports') populateReportTeacherDropdown();
@@ -124,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPDF = document.getElementById('btn-download-pdf');
   if (btnPDF) btnPDF.addEventListener('click', downloadReportPDF);
 
+  const btnDOCX = document.getElementById('btn-download-docx');
+  if (btnDOCX) btnDOCX.addEventListener('click', downloadReportDOCX);
+
   /* ---------- Header Backup ---------- */
   const btnBackup = document.getElementById('btn-backup');
   if (btnBackup) btnBackup.addEventListener('click', exportBackup);
@@ -153,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Load saved settings into form
   const s = getSettings();
   const setEx = document.getElementById('set-exemplary');
   const setPr = document.getElementById('set-proficient');
@@ -183,8 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderRecordsTable();
   populateReportTeacherDropdown();
   renderDashboard();
-  renderAttachmentsTable();
-  updateStorageBar();
+  if (typeof renderAttachmentsTable === 'function') renderAttachmentsTable();
+  if (typeof updateStorageBar === 'function') updateStorageBar();
   updateBackupStatus();
 
   /* ---------- Auto-backup warning ---------- */
